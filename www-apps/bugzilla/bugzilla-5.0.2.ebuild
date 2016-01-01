@@ -42,13 +42,10 @@ COMMON_DEPS="
 DEPEND="test? ( dev-perl/Pod-Coverage:* ${COMMON_DEPS} )"
 RDEPEND="
 	virtual/httpd-cgi:*
-
 	${COMMON_DEPS}
-
 	postgres? ( >=dev-perl/DBD-Pg-1.49:* )
 	mysql? ( >=dev-perl/DBD-mysql-4.00.5:* )
 	sqlite? ( >=dev-perl/DBD-SQLite-1.29:* )
-
 	extras? (
 		>=dev-perl/GD-2.35[png,truetype]
 		>=dev-perl/Chart-2.4.1:*
@@ -75,16 +72,13 @@ RDEPEND="
 		dev-perl/TheSchwartz:*
 		dev-perl/Daemon-Generic:*
 		dev-perl/File-MimeInfo:*
-
 		|| ( media-gfx/imagemagick[perl] media-gfx/graphicsmagick[imagemagick,perl] )
 		dev-perl/MIME-tools:*
 	)
-
 	modperl? (
 		www-apache/mod_perl:1
 		>=dev-perl/Apache-SizeLimit-0.96:*
 	)
-
 	graphviz? ( media-gfx/graphviz:* )
 "
 want_apache modperl
@@ -97,10 +91,10 @@ pkg_setup() {
 
 src_prepare() {
 	# Get a rid of the bzr files
-	rm -rf .bzr* || die
+	rm -r .bzr* || die
 
 	# Remove bundled perl modules
-	rm -rf lib/ || die
+	rm -r lib/ || die
 }
 
 src_test() {
