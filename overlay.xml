@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repositories version="1.0">
+<repo priority="50" status="unofficial">
+	<name>CraigsOverlay</name>
+	<description>Testing Overlay</description>
+	<homepage>http://edoceo.com/praxis</homepage>
+	<owner>
+		<email>craig@craiginches.com</email>
+		<name>Craig Inches</name>
+	</owner>
+	<source type="git">git://github.com/craiginches/CraigsOverlay.git</source>
+	<feed>https://github.com/craiginches/CraigsOverlay/commits/master.atom</feed>
+</repo>
+</repositories>
