@@ -98,7 +98,6 @@ src_prepare() {
 }
 
 src_test() {
-	# Shall we remove runtests.pl and t/,xt/ on install?
 	perl runtests.pl || die
 }
 
