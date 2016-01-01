@@ -116,15 +116,15 @@ src_install () {
 
 	insinto "${MY_HTDOCSDIR}"
 	doins -r . || die
-	doins "${FILESDIR}"/${MY_PB}/bugzilla.cron.{daily,tab} || die
+	doins "${FILESDIR}"/${MY_PB}/bugzilla.cron.{daily,tab}
 
 	webapp_hook_script "${FILESDIR}"/${MY_PB}/reconfig
 	webapp_postinst_txt en "${FILESDIR}"/${MY_PB}/postinstall-en.txt
 	webapp_src_install
 
 	if use extras; then
-		newconfd "${FILESDIR}"/${MY_PB}/bugzilla-queue.confd bugzilla-queue || die
-		newinitd "${FILESDIR}"/${MY_PB}/bugzilla-queue.initd bugzilla-queue || die
+		newconfd "${FILESDIR}"/${MY_PB}/bugzilla-queue.confd bugzilla-queue
+		newinitd "${FILESDIR}"/${MY_PB}/bugzilla-queue.initd bugzilla-queue
 	fi
 
 	# bug #124282
@@ -136,5 +136,5 @@ src_install () {
 	chmod u+x "${D}${MY_HTDOCSDIR}"/checksetup.pl
 
 	# bug 487476
-	mkdir "${D}${MY_HTDOCSDIR}"/lib
+	mkdir "${D}${MY_HTDOCSDIR}"/lib || die
 }
