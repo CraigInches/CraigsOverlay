@@ -6,9 +6,6 @@ EAPI=5
 
 inherit webapp depend.apache versionator eutils
 
-#MY_PB=$(get_version_component_range 1-2)
-MY_PB="4.0"
-
 DESCRIPTION="Bugzilla is the Bug-Tracking System from the Mozilla project"
 SRC_URI="https://ftp.mozilla.org/pub/mozilla.org/webtools/${P}.tar.gz"
 HOMEPAGE="https://www.bugzilla.org"
@@ -115,16 +112,16 @@ src_install () {
 	webapp_src_preinst
 
 	insinto "${MY_HTDOCSDIR}"
-	doins -r . || die
-	doins "${FILESDIR}"/${MY_PB}/bugzilla.cron.{daily,tab}
+	doins -r . 
+	doins "${FILESDIR}"/bugzilla.cron.{daily,tab}
 
-	webapp_hook_script "${FILESDIR}"/${MY_PB}/reconfig
-	webapp_postinst_txt en "${FILESDIR}"/${MY_PB}/postinstall-en.txt
+	webapp_hook_script "${FILESDIR}"/reconfig
+	webapp_postinst_txt en "${FILESDIR}"/postinstall-en.txt
 	webapp_src_install
 
 	if use extras; then
-		newconfd "${FILESDIR}"/${MY_PB}/bugzilla-queue.confd bugzilla-queue
-		newinitd "${FILESDIR}"/${MY_PB}/bugzilla-queue.initd bugzilla-queue
+		newconfd "${FILESDIR}"/bugzilla-queue.confd bugzilla-queue
+		newinitd "${FILESDIR}"/bugzilla-queue.initd bugzilla-queue
 	fi
 
 	# bug #124282
