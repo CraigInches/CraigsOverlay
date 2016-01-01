@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit webapp depend.apache versionator eutils
+inherit webapp depend.apache eutils
 
 DESCRIPTION="Bugzilla is the Bug-Tracking System from the Mozilla project"
 SRC_URI="https://ftp.mozilla.org/pub/mozilla.org/webtools/${P}.tar.gz"
@@ -39,7 +39,7 @@ COMMON_DEPS="
 	dev-perl/Math-Random-ISAAC:*
 "
 
-DEPEND="test? ( ${COMMON_DEPS} )"
+DEPEND="test? ( dev-perl/Pod-Coverage:* ${COMMON_DEPS} )"
 RDEPEND="
 	virtual/httpd-cgi:*
 
@@ -97,10 +97,10 @@ pkg_setup() {
 
 src_prepare() {
 	# Get a rid of the bzr files
-	rm -rf .bzr*
+	rm -rf .bzr* || die
 
 	# Remove bundled perl modules
-	rm -rf lib/
+	rm -rf lib/ || die
 }
 
 src_test() {
@@ -125,13 +125,13 @@ src_install () {
 	fi
 
 	# bug #124282
-	chmod +x "${D}${MY_HTDOCSDIR}"/*.cgi
+	fperms +x "${MY_HTDOCSDIR}"/*.cgi
 
-	chmod u+x "${D}${MY_HTDOCSDIR}"/jobqueue.pl
+	fperms u+x "${MY_HTDOCSDIR}"/jobqueue.pl
 
 	# configuration must be executable
-	chmod u+x "${D}${MY_HTDOCSDIR}"/checksetup.pl
+	fperms u+x "${MY_HTDOCSDIR}"/checksetup.pl
 
 	# bug 487476
-	mkdir "${D}${MY_HTDOCSDIR}"/lib || die
+	mkdir "${MY_HTDOCSDIR}"/lib || die
 }
