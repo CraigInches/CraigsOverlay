@@ -20,22 +20,14 @@ COMMON_DEPS="
 	>=dev-lang/perl-5.10.1:*
 	>=dev-perl/CGI-3.510:*
 	virtual/perl-Digest-SHA:*
-	>=dev-perl/TimeDate-1.16:*
 	>=dev-perl/DateTime-0.50:*
 	>=dev-perl/DateTime-TimeZone-0.71:*
 	>=dev-perl/DBI-1.601:*
 	>=dev-perl/Template-Toolkit-2.22:*
 	>=dev-perl/Email-Send-2.190:*
-	>=dev-perl/Email-Sender-1.300.11:*
-	>=dev-perl/File-Slurp-9999.190.0-r1:*
 	>=dev-perl/Email-MIME-1.904:*
-	>=dev-perl/JSON-XS-2.340-r1:*
 	dev-perl/URI:*
-	>=dev-perl/List-MoreUtils-0.22:*
-	virtual/perl-File-Path:*
-	virtual/perl-Scalar-List-Utils:*
-	>=virtual/perl-File-Spec-3.27.01:*
-	>=virtual/perl-MIME-Base64-3.07:*
+	>=dev-perl/List-MoreUtils-0.32:*
 	dev-perl/Math-Random-ISAAC:*
 "
 
