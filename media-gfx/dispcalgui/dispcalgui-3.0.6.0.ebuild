@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -49,6 +49,10 @@ src_prepare() {
 		sed -e '/Encoding=UTF-8/d' -i "${offendingFile}" || \
 		die "removing deprecated Encoding key from .desktop files failed"
 	done
+
+#   Remove x-world Media Type
+    cd "${S}/misc" || die "Cannot cd to misc directory."
+	sed -e 's/x\-world\/x\-vrml\;//g' -i "dispcalGUI-VRML-to-X3D-converter.desktop" || die "removing x-world media type failed"
 
 	distutils-r1_src_prepare
 }
